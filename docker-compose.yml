@@ -1,0 +1,17 @@
+version: "3"
+services:
+  test-docker:
+    image: 1f9b2b1af53e
+    privileged: true
+    ports:
+      - "3000:3000"
+      - "6543:6543"
+    restart: always
+    networks:
+      - default
+    volumes:
+      - ./development.ini:/app/development.ini
+networks:
+  default:
+    driver_opts:
+     com.docker.network.bridge.name: "debug-docker"

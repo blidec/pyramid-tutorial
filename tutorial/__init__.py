@@ -11,9 +11,11 @@ def hello_world(request):
 
 def main(global_config, **settings):
     print("start...")
-    address = ('0.0.0.0', 3000)
-    ptvsd.enable_attach(address)
-    ptvsd.wait_for_attach()
+
+    if 'debug' in settings and settings['debug'] == 'true':
+      address = ('0.0.0.0', 3000)
+      ptvsd.enable_attach(address)
+      ptvsd.wait_for_attach()
 
     config = Configurator(settings=settings)
     config.add_route('hello', '/')
