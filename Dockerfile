@@ -12,4 +12,7 @@ WORKDIR /app
 RUN pip install -r requirements.txt
 RUN pip install -e ".[dev]"
 
+RUN pip install --no-cache ptvsd
+EXPOSE 3000
+
 CMD ["pserve", "development.ini", "--reload" ] 
